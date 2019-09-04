@@ -1,0 +1,17 @@
+<div>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Type your url" #userUrl>
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="processUrl(userUrl.value)">Shorten</button>
+</div>
+<br>
+<mat-card *ngIf="shortenedUrl">
+  <div>
+    Shorten URL: <a style="color: green" [href]='sanitize(shortenedUrl)' target="blank">{{shortenedUrl}}</a>
+  </div>
+  <div>
+    <mat-checkbox>Make it private!</mat-checkbox>
+  </div>
+</mat-card>

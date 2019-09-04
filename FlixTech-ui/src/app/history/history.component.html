@@ -1,0 +1,30 @@
+<div>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Type your short code" #shortUrl>
+    </mat-form-field>
+</div>
+<div>
+    <button mat-raised-button color="primary" (click)="getHistory(shortUrl.value)">Show history</button>
+</div>
+<br>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="accessTime">
+        <th style="padding: 5px" mat-header-cell *matHeaderCellDef> Access Time </th>
+        <td style="padding: 5px" mat-cell *matCellDef="let element"> {{element.accessTime}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ip">
+        <th style="padding: 5px" mat-header-cell *matHeaderCellDef> IP </th>
+        <td style="padding: 5px" mat-cell *matCellDef="let element"> {{element.ip}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userAgent">
+        <th style="padding: 5px" mat-header-cell *matHeaderCellDef> User Agent </th>
+        <td style="padding: 5px" mat-cell *matCellDef="let element"> {{element.userAgent}} </td>
+    </ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
